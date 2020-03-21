@@ -1,10 +1,14 @@
+# Project information
 site_name: Jinay Shah's Notebook
 site_author: Jinay Shah
 site_url: https://jinayshah.netlify.com
 site_description: This is jinay shah's notebook
+
+# Repository
 repo_url: https://github.com/jinayshah86/notebook.git
 repo_name: jinayshah86/notebook
 
+# Navigation
 nav:
   - Home: 'index.md'
   - Python:
@@ -12,9 +16,8 @@ nav:
       - Decorators: 'python/decorators.md'
       - OOP: 'python/oop.md'
       - References: 'python/references.md'
-theme:
-  name: 'material'
 
+# Plugin
 plugins:
   - search
   - minify:
@@ -25,6 +28,7 @@ plugins:
   - git-revision-date-localized:
       type: timeago
 
+# Extension
 markdown_extensions:
   - smarty
   - footnotes
@@ -48,3 +52,18 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+
+# Customization
+theme:
+  name: material
+  language: en
+  font:
+    text: 'Roboto Mono'
+    code: 'Hack'
+
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/jinayshah86'
+    - type: 'linkedin'
+      link: 'https://www.linkedin.com/in/jinay-shah-46515ab6/'
