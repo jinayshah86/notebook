@@ -1,0 +1,12 @@
+site_name: Mickey Mouse Notebook
+
+theme:
+  name: 'material'
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+      minify_js: true
+      htmlmin_opts:
+          remove_comments: true
