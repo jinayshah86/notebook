@@ -1,3 +1,4 @@
+title: Welcome
 # Welcome to Mickey Mouse Notebook
 
 This notebook contains some specific notes from given set of books or video 
