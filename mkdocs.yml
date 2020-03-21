@@ -11,7 +11,7 @@ nav:
       - Functions: 'python/functions.md'
       - Decorators: 'python/decorators.md'
       - OOP: 'python/oop.md'
-
+      - References: 'python/references.md'
 theme:
   name: 'material'
 
