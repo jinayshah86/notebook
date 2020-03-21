@@ -1,8 +1,16 @@
 site_name: Jinay Shah's Notebook
 site_author: Jinay Shah
 site_url: https://jinayshah.netlify.com
+site_description: This is jinay shah's notebook
 repo_url: https://github.com/jinayshah86/notebook.git
 repo_name: jinayshah86/notebook
+
+nav:
+  - Home: 'index.md'
+  - Python:
+      - Functions: 'python/functions.md'
+      - Decorators: 'python/decorators.md'
+      - OOP: 'python/oop.md'
 
 theme:
   name: 'material'
