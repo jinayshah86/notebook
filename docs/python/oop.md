@@ -18,4 +18,8 @@ reached)
 
 Python class does not have a constructor but it has an initializer. It's 
 called an initializer since it works on an already-created instance, and 
-therefore it's called `__init__`
+therefore it's called `__init__`.  It's a magic method, which is run right 
+after the object is created. Python objects also have a `__new__` method, 
+which is the actual constructor. In practice, it's not so common to have to 
+override it though, it's a practice that is mostly used when coding 
+metaclasses.
