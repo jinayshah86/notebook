@@ -1,4 +1,8 @@
-site_name: Mickey Mouse Notebook
+site_name: Jinay Shah's Notebook
+site_author: Jinay Shah
+site_url: https://jinayshah.netlify.com
+repo_url: https://github.com/jinayshah86/notebook.git
+repo_name: jinayshah86/notebook
 
 theme:
   name: 'material'
@@ -9,11 +13,13 @@ plugins:
       minify_html: true
       minify_js: true
       htmlmin_opts:
-          remove_comments: true
+        remove_comments: true
   - git-revision-date-localized:
       type: timeago
 
 markdown_extensions:
+  - smarty
+  - footnotes
   - admonition
   - codehilite
   - toc:
