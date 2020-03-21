@@ -1,4 +1,4 @@
-title: Object-oriented programming (OOP)
+# Object-oriented programming (OOP)
 
 Singleton classes are not really used as often in Python as in other 
 languages. The effect of a singleton is usually better implemented as a global 
