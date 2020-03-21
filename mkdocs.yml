@@ -10,3 +10,5 @@ plugins:
       minify_js: true
       htmlmin_opts:
           remove_comments: true
+  - git-revision-date-localized:
+      type: timeago
