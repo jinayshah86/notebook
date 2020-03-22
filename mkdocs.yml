@@ -34,6 +34,7 @@ markdown_extensions:
   - footnotes
   - admonition
   - codehilite
+  - fontawesome_markdown
   - toc:
       permalink: true
   - pymdownx.arithmatex
@@ -48,10 +49,14 @@ markdown_extensions:
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
-  - pymdownx.superfences
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
 
 # Customization
 theme:
@@ -60,6 +65,11 @@ theme:
   font:
     text: 'Roboto Mono'
     code: 'Hack'
+
+extra_css:
+  - https://unpkg.com/mermaid@7.1.2/dist/mermaid.css
+extra_javascript:
+  - https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js
 
 extra:
   social:
