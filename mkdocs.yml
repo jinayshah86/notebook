@@ -12,6 +12,7 @@ nav:
       - Decorators: 'python/decorators.md'
       - OOP: 'python/oop.md'
       - Iterator: 'python/iterator.md'
+      - Working with files: 'python/files.md'
       - References: 'python/references.md'
 
 # Plugin
