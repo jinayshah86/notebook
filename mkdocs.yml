@@ -13,6 +13,7 @@ nav:
       - OOP: 'python/oop.md'
       - Iterator: 'python/iterator.md'
       - Working with files: 'python/files.md'
+      - 'python/custom-json.md'
       - References: 'python/references.md'
 
 # Plugin
