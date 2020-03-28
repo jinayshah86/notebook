@@ -45,7 +45,7 @@ for person in peeps:
 ```
 
 **Output:**
-```bash
+```text
 Hi, I am Obi-Wan Kenobi and my ID is 123
 Hi, I am Anakin Skywalker and my ID is 456  
 ```

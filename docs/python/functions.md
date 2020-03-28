@@ -161,8 +161,7 @@ print(c.send('Q'))     # F
 ```
 
 Output:
-```bash
-$ python gen.send.py
+```text
 0
 <class 'str'> Wow!
 1

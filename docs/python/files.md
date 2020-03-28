@@ -63,7 +63,7 @@ print(readme_path)
 print(os.path.normpath(readme_path))
 ```
 **Output:**
-```bash
+```text
 /Users/mickey/tutorials/python/files/fear.txt           # path
 fear.txt                                                # basename
 /Users/mickey/tutorials/python/files                    # dirname
@@ -93,7 +93,7 @@ with TemporaryDirectory(dir='.') as td:
         print(os.path.abspath(name))
 ```
 **Output:**
-```bash
+```text
 Temp directory: ./tmpwa9bdwgo
 /Users/mickey/tutorials/python/files/tmpwa9bdwgo/tmp3d45hm46
 ```
