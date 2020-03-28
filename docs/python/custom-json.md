@@ -4,49 +4,141 @@
 
 ```python
 import json
+import pytz
+from datetime import datetime
+from pprint import pprint
 
-# using class
+datetimeobj_key = "_datetime"
 
-class ComplexEncoder(json.JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, complex):
-            return {
-                '_meta': '_complex',
-                'num': [obj.real, obj.imag],
-            }
-        return json.JSONEncoder.default(self, obj)
-
-data = {
-    'an_int': 42,
-    'a_float': 3.14159265,
-    'a_complex': 3 + 4j,
+obj = {
+    "date": datetime.now(),
+    "datetz": datetime.now(pytz.utc),
+    "string": "hello world!",
+    "dict": {
+        "_meta": datetimeobj_key
+    },
+    "list": list(range(5)),
 }
+# using classes
+print("using classes".center(50, '-'))
 
-json_data = json.dumps(data, cls=ComplexEncoder)
-print(json_data)
 
-# using method
+class DateTimeJSONEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, datetime):
+            return {"_meta": datetimeobj_key, "value": obj.isoformat()}
+        return super().default(obj)
 
-def object_hook(obj):
-    try:
-        if obj['_meta'] == '_complex':
-            return complex(*obj['num'])
-    except (KeyError, TypeError):
+
+dump_obj = json.dumps(obj, cls=DateTimeJSONEncoder, indent=2)
+print(dump_obj)
+
+
+class DateTimeJSONDecoder(json.JSONDecoder):
+    def __init__(self, *args, **kwargs):
+        super().__init__(object_hook=self.object_hook, *args, **kwargs)
+
+    def object_hook(self, obj):
+        try:
+            if obj.get("_meta") == datetimeobj_key:
+                value = obj["value"]
+                return datetime.fromisoformat(value)
+        except KeyError:
+            return obj
         return obj
 
-data_out = json.loads(json_data, object_hook=object_hook)
-print(data_out)
+
+load_obj = json.loads(dump_obj, cls=DateTimeJSONDecoder)
+pprint(load_obj)
+
+del dump_obj
+del load_obj
+
+# using functions
+print("using functions".center(50, '-'))
+
+
+def datetime_json_encoder(obj):
+    if isinstance(obj, datetime):
+        return {"_meta": datetimeobj_key, "value": obj.isoformat()}
+    return obj
+
+
+dump_obj = json.dumps(obj, default=datetime_json_encoder, indent=2)
+print(dump_obj)
+
+
+def datetime_json_decoder(obj):
+    try:
+        if obj.get("_meta") == datetimeobj_key:
+            value = obj["value"]
+            return datetime.fromisoformat(value)
+    except (KeyError, ):
+        return obj
+    return obj
+
+
+load_obj = json.loads(dump_obj, object_hook=datetime_json_decoder)
+pprint(load_obj)
 ```
 
 
 **Output:**
-```bash
+```text
+------------------using classes-------------------
 {
-  "an_int": 42,
-  "a_float": 3.14159265,
-  "a_complex": {"_meta": "_complex", "num": [3.0, 4.0]}
+  "date": {
+    "_meta": "_datetime",
+    "value": "2020-03-28T07:00:09.446641"
+  },
+  "datetz": {
+    "_meta": "_datetime",
+    "value": "2020-03-28T07:00:09.446651+00:00"
+  },
+  "string": "hello world!",
+  "dict": {
+    "_meta": "_datetime"
+  },
+  "list": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ]
 }
-{'an_int': 42, 'a_float': 3.14159265, 'a_complex': (3+4j)}
+{'date': datetime.datetime(2020, 3, 28, 7, 0, 9, 446641),
+ 'datetz': datetime.datetime(2020, 3, 28, 7, 0, 9, 446651, tzinfo=datetime.timezone.utc),
+ 'dict': {'_meta': '_datetime'},
+ 'list': [0, 1, 2, 3, 4],
+ 'string': 'hello world!'}
+-----------------using functions------------------
+{
+  "date": {
+    "_meta": "_datetime",
+    "value": "2020-03-28T07:00:09.446641"
+  },
+  "datetz": {
+    "_meta": "_datetime",
+    "value": "2020-03-28T07:00:09.446651+00:00"
+  },
+  "string": "hello world!",
+  "dict": {
+    "_meta": "_datetime"
+  },
+  "list": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ]
+}
+{'date': datetime.datetime(2020, 3, 28, 7, 0, 9, 446641),
+ 'datetz': datetime.datetime(2020, 3, 28, 7, 0, 9, 446651, tzinfo=datetime.timezone.utc),
+ 'dict': {'_meta': '_datetime'},
+ 'list': [0, 1, 2, 3, 4],
+ 'string': 'hello world!'}
 ```
 
 For more information visit [python docs](https://docs.python.org/3.4/library/json.html#json.JSONEncoder)
