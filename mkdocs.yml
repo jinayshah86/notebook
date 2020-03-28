@@ -8,14 +8,14 @@ site_description: This is mickey mouse's notebook
 nav:
   - Home: 'index.md'
   - Python:
-      - Functions: 'python/functions.md'
-      - Decorators: 'python/decorators.md'
+      - 'python/functions.md'
+      - 'python/decorators.md'
       - OOP: 'python/oop.md'
-      - Iterator: 'python/iterator.md'
+      - 'python/iterators.md'
       - Working with files: 'python/files.md'
       - 'python/custom-json.md'
       - 'python/pickling.md'
-      - References: 'python/references.md'
+      - 'python/references.md'
 
 # Plugin
 plugins:
