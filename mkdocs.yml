@@ -17,6 +17,7 @@ nav:
       - 'python/pickling.md'
       - 'python/testing.md'
       - 'python/exceptions.md'
+      - 'python/profiling.md'
       - 'python/references.md'
 
 # Plugin
