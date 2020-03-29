@@ -15,7 +15,7 @@ nav:
       - Working with files: 'python/files.md'
       - 'python/custom-json.md'
       - 'python/pickling.md'
-      - 'python/testing.md'###
+      - 'python/testing.md'
       - 'python/exceptions.md'
       - 'python/references.md'
 

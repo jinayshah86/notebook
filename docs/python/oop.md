@@ -359,3 +359,11 @@ test = test.setter(set_test)
 # assign fdel
 test = test.deleter(det_test)
 ```
+
+### Links
+
+- [Python MRO][python-mro]{target=_blank}
+- [Magic methods][magic-methods]{target=_blank}
+
+[python-mro]: https://www.python.org/download/releases/2.3/mro/
+[magic-methods]: https://docs.python.org/3/reference/datamodel.html#basic-customization
