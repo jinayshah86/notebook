@@ -1,5 +1,9 @@
+### Introduction
+
 A decorator is a function that takes another function and extends the 
 behavior of the latter function without explicitly modifying it..
+
+### Decorators on function
 
 The `@functools.wraps` decorator uses the function 
 `functools.update_wrapper()` to update special attributes like `__name__` and 
@@ -36,10 +40,24 @@ def wrapper(*args, **kwargs):
 return wrapper
 ```
 
+### Decorators on class
+
 Decoratos can be applied to a function as well a class. Example: 
 `@dataclass` **decorator**
 
-Decorator with arguements, Example:
+**Example:**
+```python
+from dataclasses import dataclass
+
+@dataclass
+class PlayingCard:
+    rank: str
+    suit: str
+```
+
+### Decorator with arguements
+
+**Example:**
 ```python
 import functools
 
@@ -62,8 +80,12 @@ print(f"Hello {name}")
 def greet2(name):
 print(f"Greetings {name}!")
 ```
-**Stateful decorators**: a decorator that can keep track of state, Example 
-using a function:
+
+### Stateful decorators
+
+**Stateful decorators**: a decorator that can keep track of state
+
+**Example:** 
 ```python
 import functools
 
@@ -84,7 +106,9 @@ say_whee() # prints: Call 1 of 'say_whee' \nWhee!!
 say_whee() # prints: Call 2 of 'say_whee' \nWhee!!
 ```
 
-Example using a class
+### Class decorator
+
+**Example:**
 ```python
 import functools
 class Counter:
@@ -106,6 +130,8 @@ say_whee() # prints: Call 1 of 'say_whee' \nWhee!!
 say_whee() # prints: Call 2 of 'say_whee' \nWhee!!
 ```
 
-[More information on decorators][realpython-decorator]
+### Links
+
+[RealPython - Primer on Python decorators][realpython-decorator]{target=_blank}
 
 [realpython-decorator]: https://realpython.com/primer-on-python-decorators/
