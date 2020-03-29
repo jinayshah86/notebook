@@ -1,4 +1,4 @@
-#### Pickling and Unpickling
+### Pickling and Unpickling
 The `pickle` module, on the other hand, is not human readable, translates to
 bytes, is Python specific, and, thanks to the wonderful Python
 introspection capabilities, it supports an extremely large amount of data

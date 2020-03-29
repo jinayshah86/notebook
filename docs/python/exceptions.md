@@ -1,4 +1,4 @@
-#### Introduction
+### Introduction
 
 When an error is detected during execution, it is called an **exception**. 
 Exceptions are not necessarily lethal; in fact, `StopIteration` is deeply
@@ -47,7 +47,7 @@ raised, and a `finally` clause (optional), whose code is executed regardless
 of whatever happened in the other clauses. The `finally` clause is typically
 used to clean up resources.
 
-#### try-except-else-finally
+### try-except-else-finally
 
 Mind the order—it's important. Also, `try` must be followed by at least one
 `except` clause or a `finally` clause. **Example:**
@@ -83,7 +83,7 @@ Exiting                    # finally
 None                       # implicit return end of function
 ```
 
-#### Handling multiple exceptions the same way
+### Handling multiple exceptions the same way
 ```python
 import json
 json_data = '{}'
@@ -94,7 +94,7 @@ except (ValueError, TypeError) as e:
     print(type(e), e)
 ```
 
-#### Handling multiple exceptions differently
+### Handling multiple exceptions differently
 ```python
 # exceptions/multiple.except.py
 try:
@@ -114,7 +114,7 @@ specific exceptions at the top and generic ones at the bottom. In OOP terms
 , children on top, grandparents at the bottom. Moreover, remember that only
 one `except` handler is executed when an exception is raised.
 
-#### Built-in exceptions hierarchy
+### Built-in exceptions hierarchy
 
 ```text
 BaseException
@@ -183,7 +183,7 @@ BaseException
            +-- ResourceWarning
 ```
 
-#### Raising an Exception
+### Raising an Exception
 
 We can use `raise` to throw an exception if a condition occurs. The statement
 can be complemented with a custom exception. **Example:**
@@ -200,7 +200,7 @@ Traceback (most recent call last):
 Exception: x should not exceed 5. The value of x was: 10
 ```
 
-#### Guidelines
+### Guidelines
 - Always put in the `try` clause only the code that may cause the exception(s) 
 that you want to handle.
 - When you write `except` clauses, be as specific as you can, don't just

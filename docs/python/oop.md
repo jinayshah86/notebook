@@ -2,7 +2,7 @@
 
 Everything in Python is an object.
 
-#### Class
+### Class
 
 Class attributes are shared among all instances, while instance attributes
 are not; therefore, you should use class attributes to provide the states and 
@@ -66,7 +66,7 @@ languages. The effect of a singleton is usually better implemented as a global
 variable in a module.
 
 
-#### The Method Resolution Order(MRO)
+### The Method Resolution Order(MRO)
 
 **The Method Resolution Order(MRO)** is the order in which base classes are 
 searched for a member during lookup.
@@ -207,7 +207,7 @@ the class C.
 
 To get the MRO of a class C use: `C.__mro__`
 
-#### Static methods
+### Static methods
 
 Static methods are methods which need to be in the namespace of the class. They
 cannot access class or instance attributes. They can be invoked by class and 
@@ -215,7 +215,7 @@ instances both. To create a static method use `staticmethod` decorator on a
 method. Static methods are actually quite helpful in breaking up the logic of 
 a method to improve its layout. Cannot call `super()` method
 
-#### Class methods
+### Class methods
 
 Class methods are methods which need to operate only on the class level and 
 not on the instance level. They can access class attributes but not instance 
@@ -223,14 +223,14 @@ attributes. They can be invoked by class and instances both. They are generally
 used to provide factory capability to a class. To create a class method use 
 `classmethod` decorator on a method.
 
-#### Instance methods
+### Instance methods
 
 Instance methods are methods which need to operate on the instance level. They 
 can access class attributes as well as instance attributes. They can be invoked
 by instances only.
 
 
-#### Private methods and name mangling
+### Private methods and name mangling
 
 In python everything is public. Therefore, we rely on conventions and on a 
 mechanism called **name mangling**.
@@ -298,7 +298,7 @@ so that name collision is avoided.
 Every class and instance object stores
 references to their attributes in a special attribute called `__dict__`.
 
-#### Property decorator
+### Property decorator
 
 In Python, `property()` is a built-in function that creates and returns a
 property object. The signature of this function is

@@ -1,9 +1,9 @@
-#### Iterable
+### Iterable
 **Iterable:** An object is said to be iterable if it's capable of returning
 its members one at a time. Lists, tuples, strings, and dictionaries are all
 iterables. Custom objects that define either of the `__iter__` or
 `__getitem__` methods are also iterables.
-#### Iterator
+### Iterator
 **Iterator:** An object is said to be an iterator if it represents a stream
 of data. A custom iterator is required to provide an implementation for
 `__iter__` that returns the object itself, and an implementation for

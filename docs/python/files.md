@@ -1,4 +1,4 @@
-#### Opening and Reading from file
+### Opening and Reading from file
 ```python
 file_fullpath = 'temp.txt'
 filemode = 'rt'  # r: read, t: text
@@ -9,13 +9,13 @@ with open(file_fullpath, filemode) as fh:
 
 **"rt"** is the default mode
 
-#### Writing to files
+### Writing to files
 ```python
 with open('print_example.txt', 'w') as fw:
     print('Hey I am printing into a file!!!', file=fw)
 ```
 
-#### File modes
+### File modes
 
 - **r**: read file
 - **w**: file is overwritten with an empty file, and the original content is
@@ -23,7 +23,7 @@ lost.
 - **x**: open the file for writing only if it doesn't exists, if it exists
 raise `FileExistsError`
 
-#### Check existence
+### Check existence
 
 ```python
 import os
@@ -42,7 +42,7 @@ representing filesystem paths with semantics appropriate for different
 operating systems. 
 
 
-#### Manipulating pathname
+### Manipulating pathname
 **Code:**
 ```python
 # files/paths.py
@@ -74,7 +74,7 @@ fear.txt                                                # basename
 ```
 
 
-#### Temporary files and directories
+### Temporary files and directories
 Sometimes, it's very useful to be able to create a temporary directory or
 file when running some code. For example, when writing tests that affect
 the disk, you can use temporary files and directories to run your logic and

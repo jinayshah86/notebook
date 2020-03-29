@@ -1,4 +1,4 @@
-#### Useful Tips
+### Useful Tips
 **Functions should do one thing:** Functions that do one thing are easy to 
 describe in one short sentence. Functions that do multiple things can be split 
 into smaller functions that do one thing. These smaller functions are usually 
@@ -26,7 +26,7 @@ When writing **recursive functions**, always consider how many nested calls you
  make, since there is a limit. For further information on this, check out 
  `sys.getrecursionlimit()` and `sys.setrecursionlimit(limit)`.
 
-#### Lambda
+### Lambda
 ```python
 func_name = lambda [parameter_list]: expression
 ``` 
@@ -38,7 +38,7 @@ def func_name([parameter_list]): return expression
 Should you want to see all the attributes of an object, just call 
 `dir(object_name)` and you'll be given the list of all of its attributes.
 
-#### Map
+### Map
 
 `map(function, iterable, ...)` returns an iterator that applies function to 
 every item of iterable, yielding the results. If additional iterable arguments 
@@ -46,7 +46,7 @@ are passed, function must take that many arguments and is applied to the items
 from all iterables in parallel. With multiple iterables, the iterator stops 
 when the shortest iterable is exhausted.
 
-#### Zip
+### Zip
 
 `zip(*iterables)` returns an iterator of tuples, where the i-th tuple contains 
 the i-th element from each of the argument sequences or iterables. The iterator
@@ -54,7 +54,7 @@ stops when the shortest input iterable is exhausted. With a single iterable
 argument, it returns an iterator of 1-tuples. With no arguments, it returns an
 empty iterator.
 
-#### Filter
+### Filter
 
 `filter(function, iterable)` construct an iterator from those elements of 
 iterable for which function returns True. iterable may be either a sequence, a 
@@ -63,7 +63,7 @@ identity function is assumed, that is, all elements of iterable that are false
 are removed.
 
 
-#### List comprehension
+### List comprehension
 
 A list comprehension consists of brackets containing an expression followed by 
 a for clause, then zero or more for or if clauses. The result will be a new 
@@ -80,7 +80,7 @@ for member in iterable:
         new_list.append(expression)
 ```
 
-#### Dict comprehension
+### Dict comprehension
 
 A dict comprehension consists of brackets containing an expression followed by 
 a for clause, then zero or more for or if clauses. The result will be a new 
@@ -97,7 +97,7 @@ for member in iterable:
         new_dict[key] = value
 ```
 
-#### Set comprehension
+### Set comprehension
 
 Similar to list comprehension but instead of making a list,it makes a set, and 
 instead of using square brackets curly brackets are to be used. Syntax:
@@ -112,7 +112,7 @@ for member in iterable:
         new_set.add(value)
 ```
 
-#### Generator functions
+### Generator functions
 
 
 **Generator functions** are very similar to regular functions, but 
@@ -185,7 +185,7 @@ for n in print_squares(2, 5):
   print(n)
 ```
 
-#### Generator expression
+### Generator expression
 
 **Generator expression** behave like equivalent list comprehensions, but 
 generators allow for one iteration only, then they will be exhausted. The 

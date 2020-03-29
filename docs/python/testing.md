@@ -1,4 +1,4 @@
-#### Overview of testing categories
+### Overview of testing categories
 **White-box tests** are those that exercise the internals of the code; they
 inspect it down to a very fine level of detail. On the other hand, **black
 -box tests** are those that consider the software under test as if within a
@@ -11,7 +11,7 @@ testing**, which involves testing a system in the same way we do with the
 datastructures used to write the software and only partial access to its
 source code.
 
-#### In-depth testing categories
+### In-depth testing categories
 - **Frontend tests**: Make sure that the client side of your application is
 exposing the information that it should, all the links, the buttons, the
 advertising, everything that needs to be shown to the client. It may also
@@ -53,7 +53,7 @@ feature being compromised in the system after an update. Some of the causes
 for a system being said to have a regression are an old bug coming back to
 life, an existing feature being compromised, or a new issue being introduced.
 
-#### Testing guidelines
+### Testing guidelines
 - **Keep them as simple as possible.** It's okay to violate some good coding
 rules, such as hardcoding values or duplicating code. Tests need, first and
 foremost, to be as readable as possible and easy to understand. When tests
