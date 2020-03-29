@@ -16,6 +16,7 @@ nav:
       - 'python/custom-json.md'
       - 'python/pickling.md'
       - 'python/testing.md'
+      - 'python/exceptions.md'
       - 'python/references.md'
 
 # Plugin
