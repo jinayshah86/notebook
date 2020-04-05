@@ -19,6 +19,7 @@ nav:
       - 'python/exceptions.md'
       - 'python/profiling.md'
       - 'python/concurrency.md'
+      - 'python/logging.md'
       - 'python/references.md'
 
 # Plugin
