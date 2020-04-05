@@ -200,6 +200,53 @@ Traceback (most recent call last):
 Exception: x should not exceed 5. The value of x was: 10
 ```
 
+
+### Exception Chaining
+
+**Syntax:** 
+```python
+raise ExceptionClass from Cause
+```
+
+**Example:**
+```python
+class ValidatorError(Exception):
+    """Raised when accessing a dict results in KeyError. """
+
+
+d = {'some': 'key'}
+mandatory_key = 'some-other'
+try:
+    print(d[mandatory_key])
+except KeyError as err:
+    raise ValidatorError(
+        f'`{mandatory_key}` not found in d.'
+    ) from err
+
+```
+
+Without being able to chain exceptions, we would lose information about
+`KeyError`.
+
+**Output:**
+```text
+Traceback (most recent call last):
+  File "traceback_validator.py", line 7, in <module>
+    print(d[mandatory_key])
+KeyError: 'some-other'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "traceback_validator.py", line 10, in <module>
+    '`{}` not found in d.'.format(mandatory_key)) from err
+__main__.ValidatorError: `some-other` not found in d.
+```
+
+This is helpful, because we can see the traceback of the exception that
+led us to raise `ValidationError`, as well as the traceback for the
+`ValidationError` itself.
+
 ### Guidelines
 - Always put in the `try` clause only the code that may cause the exception(s) 
 that you want to handle.
