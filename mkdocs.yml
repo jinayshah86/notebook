@@ -15,7 +15,16 @@ nav:
       - Working with files: 'python/files.md'
       - 'python/custom-json.md'
       - 'python/pickling.md'
-      - 'python/testing.md'
+      - Testing:
+          - 'python/testing/introduction.md'
+          - Pytest:
+              - Introduction: 'python/testing/pytest/tests.md'
+              - 'python/testing/pytest/markers.md'
+              - 'python/testing/pytest/parametrization.md'
+              - 'python/testing/pytest/fixtures.md'
+              - 'python/testing/pytest/plugins.md'
+          - 'python/testing/tox.md'
+          - 'python/testing/coverage.md'
       - 'python/exceptions.md'
       - 'python/profiling.md'
       - 'python/concurrency.md'
