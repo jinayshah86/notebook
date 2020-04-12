@@ -65,6 +65,10 @@ Singleton classes are not really used as often in Python as in other
 languages. The effect of a singleton is usually better implemented as a global 
 variable in a module.
 
+When analyzing a system, objects typically represent nouns in the original
+problem, while methods are normally verbs. Attributes may show up as
+adjectives or more nouns. Name your classes, attributes, and methods
+accordingly.
 
 ### The Method Resolution Order(MRO)
 
@@ -228,7 +232,6 @@ used to provide factory capability to a class. To create a class method use
 Instance methods are methods which need to operate on the instance level. They 
 can access class attributes as well as instance attributes. They can be invoked
 by instances only.
-
 
 ### Private methods and name mangling
 
