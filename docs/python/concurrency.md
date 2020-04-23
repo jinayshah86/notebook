@@ -836,5 +836,5 @@ parallelize proportionately to the amount of cores my processor has.
 - [Raymond Hettinger, Keynote on Concurrency, PyBay 2017][concurrency_raymond]{target=_blank}
 
 
-[python_library]: https://docs.python.org/3.7/library/threading.html
+[python_library]: https://docs.python.org/3/library/threading.html
 [concurrency_raymond]: https://www.youtube.com/watch?v=9zinZmE3Ogk

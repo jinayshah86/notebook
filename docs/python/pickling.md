@@ -1,15 +1,12 @@
 ### Pickling and Unpickling
-The `pickle` module, on the other hand, is not human readable, translates to
-bytes, is Python specific, and, thanks to the wonderful Python
-introspection capabilities, it supports an extremely large amount of data
-types.
+The `pickle` module, is not human readable, translates to bytes, is Python
+specific, and, thanks to the wonderful Python introspection capabilities, it
+supports an extremely large amount of data types.
 
-Regardless of these differences, though, which you should know when you
-consider whether to use one or the other, I think that the most important
-concern regarding `pickle` lies in the security threats you are exposed to
-when you use it. Unpickling erroneous or malicious data from an untrusted
-source can be very dangerous, so if you decide to adopt it in your
-application, you need to be extra careful.
+I think that the most important concern regarding `pickle` lies in the
+security threats you are exposed to when you use it. Unpickling erroneous or
+malicious data from an untrusted source can be very dangerous, so if you
+decide to adopt it in your application, you need to be extra careful.
 
 **Code:**
 ```python

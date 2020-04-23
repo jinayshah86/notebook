@@ -468,5 +468,5 @@ logger.debug('This is a debug message')
 - [Logging Cookbook - Python Docs][logging_cookbook]{target=_blank}
 
 [realpython-logging]: https://realpython.com/python-logging/
-[basic_tutorial]: https://docs.python.org/3.8/howto/logging.html#logging-basic-tutorial
-[logging_cookbook]: https://docs.python.org/3.8/howto/logging-cookbook.html#logging-cookbook
+[basic_tutorial]: https://docs.python.org/3/howto/logging.html#logging-basic-tutorial
+[logging_cookbook]: https://docs.python.org/3/howto/logging-cookbook.html#logging-cookbook

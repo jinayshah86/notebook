@@ -31,10 +31,10 @@ class Splitter:
         raise StopIteration
 
 oddeven = Splitter('ThIsIsCoOl!')
-print(''.join(c for c in oddeven))  # TIICO!hssol
+print(''.join(o for o in oddeven))  # TIICO!hssol
 
-oddeven = Splitter('HoleWdlo!lr', split_by=3)
-print(''.join(c for c in oddeven))  # HelloWorld!
+splitter = Splitter('HoleWdlo!lr', split_by=3)
+print(''.join(list(splitter)))  # HelloWorld!
 
 
 oddeven = Splitter('HoLa')  # or manually...

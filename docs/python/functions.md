@@ -57,8 +57,8 @@ empty iterator.
 ### Filter
 
 `filter(function, iterable)` construct an iterator from those elements of 
-iterable for which function returns True. iterable may be either a sequence, a 
-container which supports iteration, or an iterator. If function is None, the 
+iterable for which function returns True. `iterable` may be either a sequence, a 
+container which supports iteration, or an iterator. If function is `None`, the 
 identity function is assumed, that is, all elements of iterable that are false 
 are removed.
 
@@ -66,9 +66,9 @@ are removed.
 ### List comprehension
 
 A list comprehension consists of brackets containing an expression followed by 
-a for clause, then zero or more for or if clauses. The result will be a new 
-list resulting from evaluating the expression in the context of the for and if 
-clauses which follow it. Syntax:
+a `for` clause, then zero or more `for` or `if` clauses. The result will be a 
+new list resulting from evaluating the expression in the context of the `for`
+and `if` clauses which follow it. Syntax:
 ```python
 new_list = [expression for member in iterable (if condition)]
 ```
@@ -83,9 +83,9 @@ for member in iterable:
 ### Dict comprehension
 
 A dict comprehension consists of brackets containing an expression followed by 
-a for clause, then zero or more for or if clauses. The result will be a new 
-dict resulting from evaluating the expression in the context of the for and if 
-clauses which follow it. Syntax:
+a for clause, then zero or more `for` or `if` clauses. The result will be a 
+new dict resulting from evaluating the expression in the context of the `for`
+and `if` clauses which follow it. Syntax:
 ```python
 new_dict = {key:value for member in iterable (if condition)}
 ```
@@ -116,14 +116,16 @@ for member in iterable:
 
 
 **Generator functions** are very similar to regular functions, but 
-instead of returning results through return statements, they use yield, which 
-allows them to suspend and resume their state between each call.
+instead of returning results through `return` statements, they use `yield`,
+which allows them to suspend and resume their state between each call.
 
-It's also worth noting that you can use the return statement in a generator 
+It's also worth noting that you can use the `return` statement in a generator 
 function. It will produce a `StopIteration` exception to be raised, effectively 
-ending the iteration. If a return statement were actually to make the function 
-return something, it would break the iteration protocol. Python's consistency 
-prevents this, and allows us great ease when coding. Example:
+ending the iteration. If a `return` statement were actually to make the 
+function return something, it would break the iteration protocol. Python's
+consistency prevents this, and allows us great ease when coding.
+
+**Example:**
 ```python
 # fibonacci.elegant.py
 def fibonacci(N):
@@ -139,9 +141,7 @@ behavior: `send`, `throw`, and `close`. `send` allows us to communicate a value
  back to the generator object, while `throw` and `close`, respectively, allow 
  us to raise an exception within the generator and close it.
 
-Example:
-
-Code:
+**Example:**
 ```python
 # gen.send.py
 def counter(start=0):
@@ -160,7 +160,7 @@ print(next(c))         # E
 print(c.send('Q'))     # F
 ```
 
-Output:
+**Output:**
 ```text
 0
 <class 'str'> Wow!
@@ -175,7 +175,8 @@ StopIteration
 ```
 
 The `yield from` expression allows you to yield values from a sub iterator.
-Example:
+
+**Example:**
 ```python
 # gen.yield.from.py
 def print_squares(start, end):
@@ -187,13 +188,13 @@ for n in print_squares(2, 5):
 
 ### Generator expression
 
-**Generator expression** behave like equivalent list comprehensions, but 
-generators allow for one iteration only, then they will be exhausted. The 
-syntax is exactly the same as list comprehensions, only, instead of wrapping 
-the comprehension with square brackets, you wrap it with round brackets. 
-Choose generators for computation on large datasets
+**Generator expression** behaves like list comprehensions, but generators 
+allow for one iteration only, then they will be exhausted. The syntax is 
+exactly the same as list comprehensions, only, instead of wrapping the 
+comprehension with square brackets, you wrap it with round brackets. Choose 
+generators for computation on large datasets.
 
-Example:
+**Example:**
 ```python
 # generator.expressions.py
 cubes = [k**3 for k in range(5)]  # regular list
@@ -207,8 +208,9 @@ list(cubes_gen)  # nothing more to give  # Output: []
 ```
 
 Python 3.* localizes loop variables in all four forms of comprehensions: 
-list, dict, set, and generator expressions.
-Example:
+`list`, `dict`, `set`, and `generator` expressions.
+
+**Example:**
 ```python
 # scopes.py
 A = 100
@@ -229,14 +231,13 @@ for A in range(5):
   s += A
 print(A)  # prints: 4
 
-# scopes.noglobal.py
+# scopes_noglobal.py
 ex1 = [A for A in range(5)]
 print(A)  # breaks: NameError: name 'A' is not defined
 
-# scopes.for.py
+# scopes_for.py
 s = 0
 for A in range(5):
   s += A
 print(A) # prints: 4
-print(globals())
 ```

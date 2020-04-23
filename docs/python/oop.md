@@ -1,6 +1,6 @@
 # Object-oriented programming (OOP)
 
-Everything in Python is an object.
+Everything in Python is an `object`.
 
 ### Class
 
@@ -9,10 +9,10 @@ are not; therefore, you should use class attributes to provide the states and
 behaviors to be shared by all instances, and use instance attributes for data 
 that belongs just to one specific object.
 
-When you search for an attribute in an object, if it is not found, Python 
+When you search for an attribute in an `object`, if it is not found, Python 
 keeps searching in the class that was used to create that object (and keeps 
 searching until it's either found or the end of the inheritance chain is 
-reached)
+reached).
 
 Python class does not have a constructor but it has an initializer. It's 
 called an initializer since it works on an already-created instance, and 
@@ -39,7 +39,8 @@ the `issubclass` method, Example: `issubclass(class1, class2)`.
 
 `super` is a function that returns a proxy object that delegates method calls 
 to a parent or sibling class. 
-Example:
+
+**Example:**
 ```python
 class Book:
     def __init__(self, title, publisher, pages):
@@ -80,7 +81,7 @@ or the linearization of C. C3 algorithm to compute the linearization L[C] of
 the class C is as follows: _The linearization of C is the sum of C plus the 
 merge of the linearizations of the parents and the list of the parents._
 In symbolic notation:
-> L[C(B1 ... BN)] = C + merge(L[B1] ... L[BN], B1 ... BN)
+> L[C(B1 ... BN)] = C + merge(L[B1], ... L[BN], B1, ... BN)
 
 **Computation of merge:** Take the head of the first list, i.e L[B1][0]; if this 
 head is not in the tail of any of the other lists, then add it to the 
@@ -186,7 +187,7 @@ graph TD;
 ```
 
 The linearizations of O,X,Y,A and B are as follows:
-> L[O] = 0
+> L[O] = O
 >
 > L[X] = X O
 >
@@ -239,12 +240,12 @@ In python everything is public. Therefore, we rely on conventions and on a
 mechanism called **name mangling**.
 
 - **Public** attribute -> no leading underscore in the attribute's name
-- **Private** attribute -> one leading underscore in the attribute's name
+- **Private** attribute -> two leading underscore in the attribute's name
 
 Private attributes are meant to be for internal use only, they should not be
 used or modified from outside.
 
-Example:
+**Example:**
 ```python
 class Parent:
     def __init__(self, name):
@@ -263,7 +264,7 @@ obj = Child('mickey')
 obj.get_name()    # Name is mickey
 obj.set_new_name('minnie')  # New name is minnie
 obj.get_name()    # Name is minnie <- Unexpected behaviour
-print(obj.__dict__.keys()) # dict_keys(['_name'])
+print(vars(obj).keys()) # dict_keys(['_name'])
 ```
 
 After adding another leading underscore
@@ -286,7 +287,7 @@ obj = Child('mickey')
 obj.get_name()    # Name is mickey
 obj.set_new_name('minnie')  # New name is minnie
 obj.get_name()    # Name is mickey <- Expected behaviour
-print(obj.__dict__.keys()) # dict_keys(['_Parent__name', '_Child__name'])
+print(vars(obj).keys()) # dict_keys(['_Parent__name', '_Child__name'])
 ```
 
 **Name mangling** means that any attribute name that has at least two leading
@@ -300,6 +301,8 @@ so that name collision is avoided.
 
 Every class and instance object stores
 references to their attributes in a special attribute called `__dict__`.
+Built in function `vars` is mapped to call `__dict__` on an object, behind 
+the scenes. `vars(obj)` is equivalent to `obj.__dict__`.
 
 ### Property decorator
 

@@ -75,7 +75,9 @@ see a report [like this][sample-cov-report]{target=_blank}.
 
 - [Official Docs][cov-docs]{target=_blank}
 
+
 <!-- Links -->
+
 [cov-docs]: https://coverage.readthedocs.io/en/coverage-5.0.4/
 [tox-system-overview]: ./images/tox_flow.png "tox system overview"
 [sample-cov-report]: https://nedbatchelder.com/files/sample_coverage_html/index.html

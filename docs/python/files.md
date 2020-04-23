@@ -37,9 +37,9 @@ print(path)  # /Users/mickey/tutorials/python/files
 ```
 
 Should you ever need to work with paths in a different way, you can check
-out `pathlib`. While `os.path` works with strings, `pathlib` offers classes
-representing filesystem paths with semantics appropriate for different
-operating systems. 
+out [`pathlib`][pathlib]{target=_blank}. While `os.path` works with strings, 
+`pathlib` offers classes representing filesystem paths with semantics
+appropriate for different operating systems. 
 
 
 ### Manipulating pathname
@@ -97,3 +97,8 @@ with TemporaryDirectory(dir='.') as td:
 Temp directory: ./tmpwa9bdwgo
 /Users/mickey/tutorials/python/files/tmpwa9bdwgo/tmp3d45hm46
 ```
+
+
+<!-- Links -->
+
+[pathlib]: https://docs.python.org/3/library/pathlib.html

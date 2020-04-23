@@ -81,6 +81,8 @@ Only if all environments ran successfully tox will return exit code `0`
 
 - [Official Docs][tox-docs]{target=_blank}
 
+
 <!-- Links -->
+
 [tox-docs]: https://tox.readthedocs.io/en/latest/
 [tox-system-overview]: ./images/tox_flow.png "tox system overview"

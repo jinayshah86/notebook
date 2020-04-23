@@ -691,6 +691,7 @@ The `request` fixture can be used whenever you want to customize a fixture
 based on the attributes of the test being executed, or to access the marks
 applied to the test function, as we have seen in the previous sections.
 
+
 <!-- Links -->
 
 [pylocal]: http://py.readthedocs.io/en/latest/path.html

@@ -1,5 +1,7 @@
 # Custom JSON Encoder/Decoder
 
+### Example
+
 **Code:**
 
 ```python
@@ -141,4 +143,11 @@ pprint(load_obj)
  'string': 'hello world!'}
 ```
 
-For more information visit [python docs](https://docs.python.org/3.4/library/json.html#json.JSONEncoder)
+### Links
+
+- [Python docs][python-json]{target=_blank}
+
+
+<!-- Links -->
+
+[python-json]: https://docs.python.org/3/library/json.html
