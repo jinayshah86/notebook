@@ -48,7 +48,6 @@ APIs. It is also important to make sure that exceptions contain an
 appropriate and clear message to help users understand the issue.
 
 **Example:**
-
 ```python
 
 # function
@@ -93,7 +92,6 @@ expression string that will be matched against the exception message, as
 well as checking the exception type.
 
 **Example:**
-
 ```python
 def test_empty_name():
     with pytest.raises(InvalidCharacterNameError,
@@ -150,7 +148,6 @@ the `PlayerClassenum`. We don't want to keep supporting this forever, so
 we start showing a warning whenever a character class is passed as a str.
 
 **Example:**
-
 ```python
 def get_initial_hit_points(player_class: Union[PlayerClass, str]) -> int:
     if isinstance(player_class, str):

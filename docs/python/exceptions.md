@@ -50,8 +50,9 @@ used to clean up resources.
 ### try-except-else-finally
 
 Mind the order—it's important. Also, `try` must be followed by at least one
-`except` clause or a `finally` clause. **Example:**
+`except` clause or a `finally` clause. 
 
+**Example:**
 ```python
 def try_syntax(numerator, denominator):
     try:
@@ -186,7 +187,9 @@ BaseException
 ### Raising an Exception
 
 We can use `raise` to throw an exception if a condition occurs. The statement
-can be complemented with a custom exception. **Example:**
+can be complemented with a custom exception. 
+
+**Example:**
 ```python
 x = 10
 if x > 5:
@@ -248,8 +251,8 @@ led us to raise `ValidationError`, as well as the traceback for the
 `ValidationError` itself.
 
 ### Guidelines
-- Always put in the `try` clause only the code that may cause the exception(s) 
-that you want to handle.
+- Only put the code that may cause the exception(s) that you want to handle
+in the `try` clause.
 - When you write `except` clauses, be as specific as you can, don't just
 resort to except `Exception` because it's easy.
 - Use tests to make sure your code handles edge cases in a way that requires

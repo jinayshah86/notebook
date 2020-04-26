@@ -4,8 +4,8 @@
 
 A **thread** can be defined as a sequence of instructions that can be run by a
 **scheduler**, which is that part of the operating system that decides which
-chunk of work will receive the necessary resources to be carried out
-. Typically, a thread lives within a **process**. A **process** can be
+chunk of work will receive the necessary resources to be carried out.
+Typically, a thread lives within a **process**. A **process** can be
 defined as an instance of a computer program that is being executed.
 
 ### Types of thread
@@ -29,6 +29,8 @@ thread taking precedence over it, or simply because the thread is waiting
 for a long-running IO operation to finish.
 - **Dead**: A thread that has died because it has reached the natural end of
 its stream of execution, or it has been killed.
+
+![Thread state][thread-state]
 
 ### Context switching
 
@@ -309,7 +311,9 @@ print(f'Counter: {counter}')
 
 Here `counter` is the shared resource between threads `t1` and `t2`.
 `randsleep()` function is invoked after reading and writing to shared
-resource to mimic the real-life cost attached to dealing with resources.
+resource to mimic the real-life cost attached to dealing with resources. The
+value of `counter` variable should be **10**, but it rarely becomes **10** 
+due to race condition.
 
 **Output:**
 ```text
@@ -384,8 +388,8 @@ for t in threads:
     t.start()
 ```
 
-We start by defining `local`. That is the special object that holds thread
--specific data. We run three threads. Each of them will assign a random
+We start by defining `local`. That is the special object that holds 
+thread-specific data. We run three threads. Each of them will assign a random
 value to `local.my_value`, and print it. Then the thread reaches a `Barrier`
 object, which is programmed to hold three threads in total. When the
 barrier is hit by the third thread, they all can pass. It's basically a
@@ -448,8 +452,8 @@ consumer that the producer is done.
 The **consumer** receives objects from queue and marks the object as processed
 using `q.task_done()` and when object is `SENTINEL` it stops.
 The purpose of using `q.task_done()` is to allow the final instruction in
-the code, `q.join()`, to unblock when all elements have been acknowledged, 
-so that the execution can end.
+the code to unblock when all elements have been acknowledged, so that the 
+execution can end.
 
 **Output:**
 ```text
@@ -567,8 +571,10 @@ at the same time by the executor.
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from random import randint
 import threading
+from time import sleep
 
 def run(name):
+    sleep(.05)
     value = randint(0, 10**2)
     tname = threading.current_thread().name
     print(f'Hi, I am {name} ({tname}) and my value is {value}')
@@ -591,28 +597,31 @@ Then we loop over the `future` objects, as they are done. To do this, we
 use `as_completed` to get an iterator of the `future` instances that returns
 them as soon as they complete (finish or were cancelled). We grab the
 result of each `future` by calling the `result` method, and simply print it. 
+We sleep for **50** milliseconds at the beginning of each `run`. This is to
+exacerbate the behavior and have the output clearly show the size of the
+pool, which is still three.
 
 **Output:**
 ```text
-Hi, I am T0 (ThreadPoolExecutor-0_0) and my value is 5
-Hi, I am T1 (ThreadPoolExecutor-0_0) and my value is 23
-Hi, I am T2 (ThreadPoolExecutor-0_1) and my value is 58
-Thread T1 returned 23
-Thread T0 returned 5
-Hi, I am T3 (ThreadPoolExecutor-0_0) and my value is 93
-Hi, I am T4 (ThreadPoolExecutor-0_1) and my value is 62
-Thread T2 returned 58
-Thread T3 returned 93
-Thread T4 returned 62
+Hi, I am T0 (ThreadPoolExecutor-0_0) and my value is 81
+Hi, I am T1 (ThreadPoolExecutor-0_1) and my value is 44
+Thread T0 returned 81
+Thread T1 returned 44
+Hi, I am T2 (ThreadPoolExecutor-0_2) and my value is 26
+Thread T2 returned 26
+Hi, I am T3 (ThreadPoolExecutor-0_0) and my value is 15
+Hi, I am T4 (ThreadPoolExecutor-0_1) and my value is 87
+Thread T3 returned 15
+Thread T4 returned 87
 ```
 
 So, what goes on is that three threads start running, so we get three 
 `Hi, I am...` messages printed out. Once all three of them are running, the 
 pool is at capacity, so we need to wait for at least one thread to complete 
-before anything else can happen. In the example run, `T0` and `T2` complete 
+before anything else can happen. In the example run, `T0` and `T1` complete 
 (which is signaled by the printing of what they returned), so they return to 
 the pool and can be used again. They get run with names `T3` and `T4`, and 
-finally all three, `T1`, `T3`, and `T4` complete. It can be seen from the
+finally all three, `T2`, `T3`, and `T4` complete. It can be seen from the
 output how the threads are actually reused, and how the first two are 
 reassigned to `T3` and `T4` after they complete.
 
@@ -640,10 +649,7 @@ with ProcessPoolExecutor(max_workers=3) as executor:
 ```
 
 The difference is truly minimal. We use `ProcessPoolExecutor` this time, and
-the `run` function is exactly the same, with one small addition: we sleep for
-**50** milliseconds at the beginning of each `run`. This is to exacerbate the
-behavior and have the output clearly show the size of the pool, which is
-still three.
+the `run` function is exactly the same.
 
 **Output:**
 ```text
@@ -721,7 +727,6 @@ correctly return the hostname instead of the IP, which we couldn't get anyway.
 #### Multithreaded/Multiprocessing mergesort
 
 ```python
-import pytest
 from random import shuffle
 from functools import reduce
 from concurrent.futures import (
@@ -732,7 +737,7 @@ from concurrent.futures import (
 from time import process_time
 
 
-def sort(lt: list, parts=6):
+def sort(lt: list, parts: int = 6):
     assert parts > 1
     if len(lt) <= 1:
         return lt
@@ -788,47 +793,47 @@ def calculate_time(func):
         start_time = process_time()
         result = func(*args, **kwargs)
         elapsed_time = (process_time() - start_time) * 1000
-        print(f"{func.__name__} elapsed in {elapsed_time} microseconds")
+        print(f"{func.__name__} elapsed in {elapsed_time} milliseconds")
         return result
 
     return wrapper
 
 
-def performance_measurement():
-    for lt_length in (4,1000,1000000,):
-        lt = list(range(lt_length))
+def performance_measurement_and_testing():
+    for lt_length in (4, 1000, 1000000,):
+        lt_orig = list(range(lt_length))
+        lt = list(lt_orig)
         print(f"List length: {lt_length}")
         shuffle(lt)
-        calculate_time(sort)(lt)
-        calculate_time(sort_multithreading)(lt)
-        calculate_time(sort_multiprocessing)(lt)
+        for func in (sort, sort_multithreading, sort_multiprocessing):
+            sorted_lt = calculate_time(func)(lt)
+            assert sorted_lt == lt_orig
 
-
-performance_measurement()
+performance_measurement_and_testing()
 ```
 
 **Output:**
 ```text
 List length: 4
-sort elapsed in 0.029448999999986958 microseconds
-sort_multithreading elapsed in 2.796734000000023 microseconds
-sort_multiprocessing elapsed in 8.03862999999999 microseconds
+sort elapsed in 0.029448999999986958 milliseconds
+sort_multithreading elapsed in 2.796734000000023 milliseconds
+sort_multiprocessing elapsed in 8.03862999999999 milliseconds
 List length: 1000
-sort elapsed in 3.742769000000007 microseconds
-sort_multithreading elapsed in 6.403607000000005 microseconds
-sort_multiprocessing elapsed in 9.161322 microseconds
+sort elapsed in 3.742769000000007 milliseconds
+sort_multithreading elapsed in 6.403607000000005 milliseconds
+sort_multiprocessing elapsed in 9.161322 milliseconds
 List length: 1000000
-sort elapsed in 8895.442821999999 microseconds
-sort_multithreading elapsed in 8808.045813 microseconds
-sort_multiprocessing elapsed in 1428.9983950000008 microseconds
+sort elapsed in 8895.442821999999 milliseconds
+sort_multithreading elapsed in 8808.045813 milliseconds
+sort_multiprocessing elapsed in 1428.9983950000008 milliseconds
 ```
 
 This is a good example to show you a consequence of choosing multiprocessing
 approach over multithreading. Because the code is CPU-intensive, and there
 is no IO going on, splitting the list and having threads working the chunks
-doesn't add any advantage. On the other hand, using processes does.
-I used six workers in the multiprocessing version, I can still only
-parallelize proportionately to the amount of cores my processor has.
+doesn't add any advantage. On the other hand, using processes does. I used
+six workers in the multiprocessing version, Remember to parallelize
+proportionately to the amount of cores your processor has.
 
 ### Links
 
@@ -838,3 +843,4 @@ parallelize proportionately to the amount of cores my processor has.
 
 [python_library]: https://docs.python.org/3/library/threading.html
 [concurrency_raymond]: https://www.youtube.com/watch?v=9zinZmE3Ogk
+[thread-state]: https://lh4.googleusercontent.com/oR0_liUxjMnfgFS-fSuc0x2vCCPLQ0Vdw6w2rBVGloaE_84tRNprqNJEJiyI1unMY8Vpj2CDK9GiQGy03_RmteRz-aM31iIQcZsVZhIH2cLrne_5nY9miXKDmQqEHdY60_WopC0

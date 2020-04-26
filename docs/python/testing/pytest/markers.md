@@ -227,9 +227,7 @@ based on specific conditions. Skipped tests are not executed if the
 condition is true, and are not counted towards test suite failures.
 
 **Example:**
-
-For example, you can use the `skipif` mark to always skip a test when
-executing on Windows:
+you can use the `skipif` mark to always skip a test when executing on Windows:
 
 ```python
 import sys

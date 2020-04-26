@@ -14,7 +14,6 @@ You can use the `basicConfig(**kwargs)` method to configure the logging.
 Some of the commonly used parameters for basicConfig() are the following:
 
 - **level:** The root logger will be set to the specified severity level. 
-The defult value is `root`.
 - **filename:** This specifies the file.
 - **filemode:** If filename is given, the file is opened in this mode. The
 default is `a`, which means append.
@@ -155,7 +154,6 @@ application. Exception information can be captured if the `exc_info`
 parameter is passed as `True`. This works with all the level methods.
 
 **Example:**
-
 ```python
 import logging
 
@@ -342,10 +340,9 @@ underlying mechanism used.
 in the queue or multiprocessing modules.
 
 - **NullHandler** instances do nothing with error messages. They are used by
-library developers who want to use logging, but want to avoid the ‘No
-handlers could be found for logger XXX’ message which can be displayed if
-the library user has not configured logging. See Configuring Logging for a
-Library for more information.
+library developers who want to use logging, but want to avoid the '**No
+handlers could be found for logger XXX**' message which can be displayed if
+the library user has not configured logging.
 
 ### Other configuration methods
 
@@ -356,7 +353,7 @@ want to change your logging configuration in a running application.
 
 #### Conf file approach
 
-**Example config file:**
+**Example config file: `log.conf`**
 ```editorconfig
 [loggers]
 keys=root,sampleLogger
@@ -396,7 +393,7 @@ To load this config file, you have to use `fileConfig()`:
 import logging
 import logging.config
 
-logging.config.fileConfig(fname='file.conf', disable_existing_loggers=False)
+logging.config.fileConfig(fname='log.conf', disable_existing_loggers=False)
 
 # Get the logger specified in the file
 logger = logging.getLogger(__name__)
@@ -413,6 +410,9 @@ The path of the config file is passed as a parameter to the `fileConfig()`
 method, and the `disable_existing_loggers` parameter is used to keep or
 disable the loggers that are present when the function is called. It
 defaults to `True` if not mentioned.
+If `propagate` attribute evaluates to true, events logged to this logger
+will be passed to the handlers of higher level (ancestor) loggers, in
+addition to any handlers attached to this logger.
 
 #### Dictionary approach
 
@@ -434,9 +434,9 @@ loggers:
     level: DEBUG
     handlers: [console]
     propagate: no
-root:
-  level: DEBUG
-  handlers: [console]
+  root:
+    level: DEBUG
+    handlers: [console]
 ```
 
 Load config from a `yaml` file:

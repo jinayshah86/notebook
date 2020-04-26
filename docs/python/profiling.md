@@ -19,7 +19,6 @@ timings are made for the intervals between these events. Another approach
 pointer, and deduces where time is being spent.
 
 **Example:**
-
 ```python
 # calculate pythagorean triples
 def calc_triples(mx):
